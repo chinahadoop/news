@@ -23,7 +23,7 @@ Apache HBase社区已经发布了HBase 1.0.0版本。HBase经过七年发展，终于迎来这天，对于
 然而，渐渐的HBase社区希望一个HBase版本可以工作于多个Hadoop版本之上——不仅仅只工作于与其主版本匹配的某一个Hadoop版本。于是，正如上图
 所示，一个新的版本命名规则产生了，版本号从接近1.0的0.90主版本开始。我们也遵从了奇偶发布版本号的惯例，即奇数版本号为“开发人员预览版”
 （developer previews），偶数版本号为可以产品化的“稳定版”（stable）。因此，稳定版的发布版本包括0.90、0.92、0.94、0.96和0.98（可以
-翻看一下HBase的版本说明获取更多的信息：https://hbase.apache.org/book.html#hbase.versioning）。  
+翻看一下HBase的版本说明获取更多的信息：https://hbase.apache.org/book.html#hbase.versioning ）。  
   
 在0.98版本之后，我们将项目的主分支（trunk）版本命名为0.99-SNAPSHOT，但实际，我们已经官方的将可用的版本号码用光了！于是在去年，HBase
 社区同意，项目已经成熟并且足够稳定，1.0.0版本的发布被提上日程。在经过了三个0.99.x系列的“开发者预览版”以及六个Apache HBase 1.0.0
@@ -46,10 +46,10 @@ HBase的client级API已经发展了好几年，为了简化其语意，同时有益于未来的扩展性和易用
 （deprecates，开源项目中某些API被deprecates，表示这些API在系统再演进一段时间之后会被去掉，同时不再基于其开发新的功能支持，译者注）。  
   
 我们建议您更新您的应用，使用新的API，因为不再支持的（deprecated）API将会在未来的2.x系列版本中被删除。更详细的说明，可以参看：
-http://www.slideshare.net/xefyr/apache-hbase-10-release以及http://s.apache.org/hbase-1.0-api。  
+http://www.slideshare.net/xefyr/apache-hbase-10-release 以及 http://s.apache.org/hbase-1.0-api。  
   
-如果一个类或者方法是官方的“客户API”，该客户端API会被InterfaceAudience.Public这个类（https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/classification/InterfaceAudience.Public.html）
-注解（这是个annotation，译者注）（更详细的信息，参考HBase手册http://hbase.apache.org/book.html的“11.1.1. HBase API Surface”一章）。
+如果一个类或者方法是官方的“客户API”，该客户端API会被InterfaceAudience.Public这个类（https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/classification/InterfaceAudience.Public.html ）
+注解（这是个annotation，译者注）（更详细的信息，参考HBase手册http://hbase.apache.org/book.html 的“11.1.1. HBase API Surface”一章）。
 同时，对于以注解方式声明为client侧公开的类，所有的1.x版本将会对其API兼容。  
   
 ### **用时间一致的region备份实现读可用性**  
@@ -57,19 +57,19 @@ http://www.slideshare.net/xefyr/apache-hbase-10-release以及http://s.apache.org/h
 作为第一阶段的一部分，这个版本包含了一个实验性质的功能“用时间一致的region备份实现读可用性”
 （"Read availability using timeline consistent region replicas"）。即，一个region可以在多个region server中以只读模式存在。region的
 一个备份为主备份，可写，而其他备份将共享相同的数据文件。读请求可以被region的任意备份满足，同时以时间一致的保障备份RPC以满足高可用性。
-对具体的细节感兴趣，可以参考JIRA HBASE-10070（https://issues.apache.org/jira/browse/HBASE-10070）。  
+对具体的细节感兴趣，可以参考JIRA HBASE-10070（https://issues.apache.org/jira/browse/HBASE-10070 ）。  
   
 ### **在线配置修改及合并0.89-fb分支的一些功能**  
   
-Apache HBase项目中的0.89-fb是Facebook用于放置他们的修改的分支。JIRA HBASE-12147（https://issues.apache.org/jira/browse/HBASE-12147）
+Apache HBase项目中的0.89-fb是Facebook用于放置他们的修改的分支。JIRA HBASE-12147（https://issues.apache.org/jira/browse/HBASE-12147 ）
 合入了其中的补丁，可以在不用重启region server的情况下重新加载HBase服务器配置。  
   
 除此之外，还有很多很多的性能优化（优化WAL（Write-ahead-Log，HBase写日志，译者注）管道，disruptor的使用，多WAL，更多的使用off-heap
 内存（不在java heap中，不被GC管理的内存，译者注），等等）以及bug fix，还有很多很棒的特性，太多了，无法在这里一一列举。大家可以从
-官方的release notes（http://markmail.org/message/u43qluenc7soxloe）中获取更详细的描述。release note以及参考说明中也会包含二进制
+官方的release notes（http://markmail.org/message/u43qluenc7soxloe ）中获取更详细的描述。release note以及参考说明中也会包含二进制
 发布包、源代码、以及兼容性需求，支持的Hadoop及Java版本说明，从0.94、0.96、0.98版本如何升级以及很多其他重要的细节。  
   
-HBase-1.0.0也是使用“语义版本”（“semantic versioning”，http://semver.org/）的开始。简单的说，将来的HBase发布版本将采用MAJOR.MINOR.PATCH
+HBase-1.0.0也是使用“语义版本”（“semantic versioning”，http://semver.org/ ）的开始。简单的说，将来的HBase发布版本将采用MAJOR.MINOR.PATCH
 这样的显式兼容性语义形式。HBase说明书中包含兼容性以及可预知的不同版本之间区别的所有内容描述。  
   
 ## 下一步  
