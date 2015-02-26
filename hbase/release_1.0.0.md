@@ -21,7 +21,7 @@ Apache HBase社区已经发布了HBase 1.0.0版本。HBase经过七年发展，终于迎来这天，对于
 ![image](https://github.com/chinahadoop/news/blob/master/hbase/materials/versions.png)  
   
 然而，渐渐的HBase社区希望一个HBase版本可以工作于多个Hadoop版本之上——不仅仅只工作于与其主版本匹配的某一个Hadoop版本。于是，正如上图
-所示，一个新的版本命名规则产生了，版本号从接近1.0的0.90主版本开始。我们也遵从了奇偶发布版本号的惯例，即偶数版本号为“开发人员预览版”
+所示，一个新的版本命名规则产生了，版本号从接近1.0的0.90主版本开始。我们也遵从了奇偶发布版本号的惯例，即奇数版本号为“开发人员预览版”
 （developer previews），偶数版本号为可以产品化的“稳定版”（stable）。因此，稳定版的发布版本包括0.90、0.92、0.94、0.96和0.98（可以
 翻看一下HBase的版本说明获取更多的信息：https://hbase.apache.org/book.html#hbase.versioning）。  
   
@@ -39,7 +39,7 @@ Apache HBase社区已经发布了HBase 1.0.0版本。HBase经过七年发展，终于迎来这天，对于
   
 包括之前的0.99.x版本的修改，1.0.0包含了已经解决的1500多个jira问题（jira为apache项目用于提交和解决开源项目问题的系统及体系，译者注）。
 一些主要的修改：  
-### API重构及修改  
+### **API重构及修改**  
   
 HBase的client级API已经发展了好几年，为了简化其语意，同时有益于未来的扩展性和易用性，我们重新审视了1.0以前的API。最终，在1.0.0版本中
 引入新的API，同时将hbase client侧的一些经常使用的API（包括HTableInterface, HTable and HBaseAdmin）设置为将不再支持
@@ -52,14 +52,14 @@ http://www.slideshare.net/xefyr/apache-hbase-10-release以及http://s.apache.org/h
 注解（这是个annotation，译者注）（更详细的信息，参考HBase手册http://hbase.apache.org/book.html的“11.1.1. HBase API Surface”一章）。
 同时，对于以注解方式声明为client侧公开的类，所有的1.x版本将会对其API兼容。  
   
-### 用时间一致的region备份实现读可用性  
+### **用时间一致的region备份实现读可用性**  
   
 作为第一阶段的一部分，这个版本包含了一个实验性质的功能“用时间一致的region备份实现读可用性”
 （"Read availability using timeline consistent region replicas"）。即，一个region可以在多个region server中以只读模式存在。region的
 一个备份为主备份，可写，而其他备份将共享相同的数据文件。读请求可以被region的任意备份满足，同时以时间一致的保障备份RPC以满足高可用性。
 对具体的细节感兴趣，可以参考JIRA HBASE-10070（https://issues.apache.org/jira/browse/HBASE-10070）。  
   
-### 在线配置修改及合并0.89-fb分支的一些功能  
+### **在线配置修改及合并0.89-fb分支的一些功能**  
   
 Apache HBase项目中的0.89-fb是Facebook用于放置他们的修改的分支。JIRA HBASE-12147（https://issues.apache.org/jira/browse/HBASE-12147）
 合入了其中的补丁，可以在不用重启region server的情况下重新加载HBase服务器配置。  
@@ -74,14 +74,14 @@ HBase-1.0.0也是使用“语义版本”（“semantic versioning”，http://semver.org/）的
   
 ## 下一步  
 我们已经将HBase-1.0.0标志为下一个HBase的稳定版本，这意味着所有的新用户应当开始使用这一版本。但是，作为数据库，我们深知，切换到一个
-全新的版本需要耗费一些时间。我们将继续维护0.98.x版本，直到我们的用户已经准备好接收老版本的结束。1.0.x以及1.1.0、1.2.0等产品线将从
-它们相应的分支中发布，同时，当2.0.0及其它的主版本随时代应运而生是，也将遵循这一规则。  
+全新的版本需要耗费一些时间。我们将继续维护0.98.x版本，直到我们的用户已经准备好接受老版本的结束。1.0.x以及1.1.0、1.2.0等产品线将从
+它们相应的分支中发布，同时，当2.0.0及其它的主版本随时代应运而生时，也将遵循这一规则。  
   
 读备份第二阶段的功能、以列族（column family）为单位的flush、procedure V2、 在SSD上存储WAL或列族数据等等，已经在即将实现的功能
 列表中。  
   
 ## 总结  
-最后想说说，HBase 1.0.0的发布过程是如此漫长的过程，期间得到了大量令人敬佩的人们的贡献，committer以及contributor们的辛勤工作促成
+最后想说说，HBase 1.0.0的发布过程是如此的漫长，期间得到了大量令人敬佩的人们的贡献，committer以及contributor们的辛勤工作促成
 这一伟大里程碑。我们由衷的感谢我们的用户以及所有在这些年中为HBase做出贡献的人们。  
   
 继续与HBase共舞吧！
