@@ -86,5 +86,3 @@ HBase-1.0.0Ò²ÊÇÊ¹ÓÃ¡°ÓïÒå°æ±¾¡±£¨¡°semantic versioning¡±£¬http://semver.org/ £©µ
   
 ¼ÌĞøÓëHBase¹²Îè°É£¡
 
-
-ÕıÊÇ
