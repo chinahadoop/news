@@ -56,7 +56,7 @@ http://www.slideshare.net/xefyr/apache-hbase-10-release 以及 http://s.apache.org
   
 作为第一阶段的一部分，这个版本包含了一个实验性质的功能“用时间一致的region备份实现读可用性”
 （"Read availability using timeline consistent region replicas"）。即，一个region可以在多个region server中以只读模式存在。region的
-一个备份为主备份，可写，而其他备份将共享相同的数据文件。读请求可以被region的任意备份满足，同时以时间一致的保障备份RPC以满足高可用性。
+一个备份为主备份，可写，而其他备份将共享相同的数据文件。读请求以多RPC方式发向region的任意备份并被其满足，从而实现保障时间一致的高可读性。
 对具体的细节感兴趣，可以参考JIRA HBASE-10070（https://issues.apache.org/jira/browse/HBASE-10070 ）。  
   
 ### **在线配置修改及合并0.89-fb分支的一些功能**  
